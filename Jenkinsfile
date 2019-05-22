@@ -28,11 +28,11 @@ pipeline {
   stage('Docker-Build') {
    steps {
 
-    sh "docker build -t iad.ocir.io/codeatcustomer1/fsc-products:1.0.0 . --no-cache"
+    sh "docker build -t iad.ocir.io/codeatcustomer1/gladiators/fsc-products:1.0.0 . --no-cache"
     
     sh "docker login -u 'codeatcustomer1/oracleidentitycloudservice/balarama.reddy.osv@fedex.com' -p '4w[MdqNRVJY[hEX8P8.#' iad.ocir.io"
     
-    sh "docker push iad.ocir.io/codeatcustomer1/fsc-products:1.0.0"
+    sh "docker push iad.ocir.io/codeatcustomer1/gladiators/fsc-products:1.0.0"
    }
    post {
     success {
