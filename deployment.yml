@@ -43,13 +43,14 @@ apiVersion: v1
 kind: Service
 metadata:
   name: fsc-products
-  annotations:
-    service.beta.kubernetes.io/oci-load-balancer-internal: "true"
+  labels: 
+    app: fsc-products
+    commit: ${GIT_COMMIT}
 spec:
-  type: LoadBalancer
   ports:
-  - port: 8080
+  - port: 30000
     targetPort: 8080
-    protocol: TCP
   selector:
     app: fsc-products
+    color: blue
+  type: ClusterIP
