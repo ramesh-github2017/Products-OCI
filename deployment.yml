@@ -36,4 +36,4 @@ spec:
   selector:
     app: fsc-products
     color: blue
-  type: ClusterIP
+  type: LoadBalancer
