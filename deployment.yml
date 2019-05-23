@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: fsc-products
-        image: gladiators/fsc-products:1.0.0
+        image: iad.ocir.io/codeatcustomer1/gladiators/fsc-products:1.0.0
         ports:
         - containerPort: 8080
         readinessProbe:
@@ -36,7 +36,8 @@ spec:
           value: "fake"
         - name: SECURITY_PASS
           value: "fake"
-
+      imagePullSecrets:  
+      - name: ocirsecret
 ---
 apiVersion: v1
 kind: Service
