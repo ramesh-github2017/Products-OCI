@@ -33,8 +33,6 @@ pipeline {
     sh "docker login -u 'codeatcustomer1/oracleidentitycloudservice/balarama.reddy.osv@fedex.com' -p '4w[MdqNRVJY[hEX8P8.#' iad.ocir.io"
     
     sh "docker push iad.ocir.io/codeatcustomer1/gladiators/fsc-products:1.0.0"
-    
-    sh "kubectl apply -f deployment.yml"
    }
    post {
     success {
