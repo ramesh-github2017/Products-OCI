@@ -29,11 +29,13 @@ metadata:
   labels: 
     app: fsc-products
     commit: ${GIT_COMMIT}
+  annotations:
+    service.beta.kubernetes.io/oci-load-balancer-internal: "true"
 spec:
+  type: LoadBalancer
   ports:
   - port: 30000
     targetPort: 8080
+    protocol: TCP
   selector:
     app: fsc-products
-    color: blue
-  type: LoadBalancer
