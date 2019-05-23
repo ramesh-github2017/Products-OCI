@@ -59,7 +59,7 @@ pipeline {
                       ])
 
     
-    sh "docker login -u 'codeatcustomer1/oracleidentitycloudservice/balarama.reddy.osv@fedex.com' -p '4w[MdqNRVJY[hEX8P8.#' iad.ocir.io"
+		sh "docker login -u 'codeatcustomer1/api.user' -p '#orJ7TKqx;jkl{4m9B#l' iad.ocir.io"
     
 	 sh "docker tag fsc-products:${scmVars.GIT_COMMIT} iad.ocir.io/codeatcustomer1/gladiators/fsc-products:${scmVars.GIT_COMMIT}"
 	
