@@ -63,7 +63,7 @@ pipeline {
     
 	 sh "docker tag fsc-products:${scmVars.GIT_COMMIT} iad.ocir.io/codeatcustomer1/gladiators/fsc-products:${scmVars.GIT_COMMIT}"
 	
-    sh "docker push iad.ocir.io/codeatcustomer1/fsc-products:${scmVars.GIT_COMMIT}"
+    sh "docker push iad.ocir.io/codeatcustomer1/gladiators/fsc-products:${scmVars.GIT_COMMIT}"
    }
   }
    post {
