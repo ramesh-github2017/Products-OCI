@@ -25,15 +25,47 @@ pipeline {
     }
    }
   }
-  stage('Docker-Build') {
-   steps {
 
-    sh "docker build -t iad.ocir.io/codeatcustomer1/gladiators/fsc-products:1.0.0 . --no-cache"
+   stage('Docker Build') {
+   steps {
+   
+   script {
+                    def scmVars = checkout([
+                        $class: 'GitSCM',
+                        doGenerateSubmoduleConfigurations: false,
+                        userRemoteConfigs: [[
+                            url: 'https://github.com/ramesh-github2017/Products-OCI.git'
+                          ]],
+                        branches: [ [name: '*/master'] ]
+                      ])
+
+    sh "docker build -t iad.ocir.io/codeatcustomer1/fsc-products:${scmVars.GIT_COMMIT} . --no-cache"
+       
+   }
+  }
+  } 
+
+  stage('PUSH2OCIR') {
+   steps {
+   
+   script {
+                    def scmVars = checkout([
+                        $class: 'GitSCM',
+                        doGenerateSubmoduleConfigurations: false,
+                        userRemoteConfigs: [[
+                            url: 'https://github.com/ramesh-github2017/Products-OCI.git'
+                          ]],
+                        branches: [ [name: '*/master'] ]
+                      ])
+
     
     sh "docker login -u 'codeatcustomer1/oracleidentitycloudservice/balarama.reddy.osv@fedex.com' -p '4w[MdqNRVJY[hEX8P8.#' iad.ocir.io"
     
-    sh "docker push iad.ocir.io/codeatcustomer1/gladiators/fsc-products:1.0.0"
+	 sh "docker tag fsc-products:${scmVars.GIT_COMMIT} iad.ocir.io/codeatcustomer1/gladiators/fsc-products:${scmVars.GIT_COMMIT}"
+	
+    sh "docker push iad.ocir.io/codeatcustomer1/fsc-products:${scmVars.GIT_COMMIT}"
    }
+  }
    post {
     success {
      echo "Success TEST"
