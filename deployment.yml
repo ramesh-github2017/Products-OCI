@@ -19,23 +19,6 @@ spec:
         image: iad.ocir.io/codeatcustomer1/gladiators/fsc-products:${GIT_COMMIT}
         ports:
         - containerPort: 8080
-        readinessProbe:
-          httpGet:
-            path: /health
-            port: 8080
-          initialDelaySeconds: 30
-          periodSeconds: 5
-        livenessProbe:
-          httpGet:
-            path: /health
-            port: 8080
-          initialDelaySeconds: 60
-          periodSeconds: 5
-        env:
-        - name: SECURITY_USER
-          value: "fake"
-        - name: SECURITY_PASS
-          value: "fake"
       imagePullSecrets:  
       - name: ocirsecret
 ---
