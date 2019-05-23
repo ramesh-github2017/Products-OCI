@@ -39,7 +39,7 @@ pipeline {
                         branches: [ [name: '*/master'] ]
                       ])
 
-    sh "docker build -t iad.ocir.io/codeatcustomer1/fsc-products:${scmVars.GIT_COMMIT} . --no-cache"
+    sh "docker build -t fsc-products:${scmVars.GIT_COMMIT} . --no-cache"
        
    }
   }
