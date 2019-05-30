@@ -6,6 +6,9 @@ metadata:
   labels: 
     app: fsc-products
     commit: ${GIT_COMMIT}
+  annotations:
+    service.beta.kubernetes.io/oci-load-balancer-internal: "true"
+
 spec:
   type: LoadBalancer
   ports:
