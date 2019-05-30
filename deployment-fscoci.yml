@@ -2,6 +2,7 @@ apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
   name: fsc-products
+  namespace: b-namespace
   labels:
     app: fsc-products
 spec:
@@ -20,4 +21,4 @@ spec:
         ports:
         - containerPort: 8080
       imagePullSecrets:  
-      - name: ocirsecret
+      - name: balaramocirsecret
