@@ -1,0 +1,39 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: fsc-products
+  labels:
+    app: fsc-products
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: fsc-products
+  template:
+    metadata:
+      labels:
+        app: fsc-products
+    spec:
+      containers:
+      - name: fsc-products
+        image: iad.ocir.io/codeatcustomer1/gladiators/fsc-products:${GIT_COMMIT}
+        ports:
+        - containerPort: 8080
+      imagePullSecrets:  
+      - name: ocirsecret
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: fsc-products
+  labels: 
+    app: fsc-products
+    commit: ${GIT_COMMIT}
+spec:
+  type: LoadBalancer
+  ports:
+  - port: 30000
+    targetPort: 8080
+    protocol: TCP
+  selector:
+    app: fsc-products
