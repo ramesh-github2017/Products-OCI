@@ -59,11 +59,11 @@ pipeline {
                       ])
 
     
-		sh "docker login -u 'codeatcustomer1/oracleidentitycloudservice/balarama.reddy.osv@fedex.com' -p '4w[MdqNRVJY[hEX8P8.#' iad.ocir.io"
+		sh "docker login -u 'fedexoraclecloud/oracleidentitycloudservice/5297102' -p 'z;.4Ld>Ach]f61pv6[y0' iad.ocir.io"
     
-	 sh "docker tag fsc-products:${scmVars.GIT_COMMIT} iad.ocir.io/codeatcustomer1/gladiators/fsc-products:${scmVars.GIT_COMMIT}"
+	 sh "docker tag fsc-products:${scmVars.GIT_COMMIT} iad.ocir.io/fedexoraclecloud/fsc/fsc-products:${scmVars.GIT_COMMIT}"
 	
-    sh "docker push iad.ocir.io/codeatcustomer1/gladiators/fsc-products:${scmVars.GIT_COMMIT}"
+    sh "docker push iad.ocir.io/fedexoraclecloud/fsc/fsc-products:${scmVars.GIT_COMMIT}"
    }
   }
    post {
