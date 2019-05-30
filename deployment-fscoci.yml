@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: fsc-products
-        image: iad.ocir.io/codeatcustomer1/gladiators/fsc-products:${GIT_COMMIT}
+        image: iad.ocir.io/fedexoraclecloud/fsc/fsc-products:${GIT_COMMIT}
         ports:
         - containerPort: 8080
       imagePullSecrets:  
