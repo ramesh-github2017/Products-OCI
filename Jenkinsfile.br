@@ -56,8 +56,8 @@ pipeline {
 			steps {
 				sh("kubectl get ns ${namespace} || kubectl create ns ${namespace}")
 				sh("sed -i 's#iad.ocir.io/fedexoraclecloud/fsc/fsc-products:latest#${imageTag}#g' ./*.yml")
-				sh("kubectl --namespace=${namespace} apply -f deployment-fscoci.yml")
-				sh("kubectl --namespace=${namespace} apply -f service_fscoci.yml")
+				sh("kubectl --namespace=${namespace} apply -f deployment-br.yml")
+				sh("kubectl --namespace=${namespace} apply -f service-br.yml")
 			
 				sh("echo http://`kubectl --namespace=${namespace} get service/${appName} --output=json | jq -r '.status.loadBalancer.ingress[0].ip'` > ${appName}")
 			}	
