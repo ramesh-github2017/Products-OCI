@@ -22,11 +22,17 @@ pipeline {
 		}
 
 		//Checkout Code from Git
-		checkout scm
-		
+		stage('Build') {
+			steps {
+				checkout scm
+			}
+		}
+			
 		//Stage 1: Build the JAR file with Maven.
 		stage('Build') {
-			sh("mvn clean install -DskipTests")
+			steps {
+				sh("mvn clean install -DskipTests")
+			}
 		}
 
 		//Stage 2: Build the docker image.
