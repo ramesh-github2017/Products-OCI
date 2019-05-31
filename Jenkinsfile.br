@@ -1,5 +1,6 @@
 pipeline {
 	agent any
+
 	environment {
 	def project = 'fsc'
 	def appName = 'fsc-products'  
@@ -7,10 +8,6 @@ pipeline {
 	def namespace = 'b-namespace'
 	def imageTag = "iad.ocir.io/fedexoraclecloud/${project}/${appName}:${imageVersion}"
 	}
-	/*tools {
-		maven 'mvn'
-		jdk 'jdk'
-	} */
 	
 	stages {
 		//Stage 1: Build the JAR file with Maven.
@@ -42,8 +39,6 @@ pipeline {
 				sh("sed -i 's#iad.ocir.io/fedexoraclecloud/fsc/fsc-products:latest#${imageTag}#g' ./*.yml")
 				sh("kubectl --namespace=${namespace} apply -f deployment-br.yml")
 				sh("kubectl --namespace=${namespace} apply -f service-br.yml")
-			
-				sh("echo http://`kubectl --namespace=${namespace} get service/${appName} --output=json | jq -r '.status.loadBalancer.ingress[0].ip'` > ${appName}")
 			}	
 		}
 	}
