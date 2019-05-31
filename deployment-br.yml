@@ -1,0 +1,24 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: fsc-products
+  namespace: b-namespace
+  labels:
+    app: fsc-products
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: fsc-products
+  template:
+    metadata:
+      labels:
+        app: fsc-products
+    spec:
+      containers:
+      - name: fsc-products
+        image: iad.ocir.io/fedexoraclecloud/fsc/fsc-products:latest
+        ports:
+        - containerPort: 8080
+      imagePullSecrets:  
+      - name: balaramocirsecret
