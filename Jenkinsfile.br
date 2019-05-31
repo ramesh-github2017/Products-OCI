@@ -36,7 +36,7 @@ pipeline {
 		stage('Deploy Application') {
 			steps {
 				sh("kubectl get ns ${namespace} || kubectl create ns ${namespace}")
-				sh("sed -i 's#iad.ocir.io/fedexoraclecloud/fsc/fsc-products:latest#${imageTag}#g' ./*.yml")
+				sh("sed -i 's#iad.ocir.io/fedexoraclecloud/fsc/${appName}:latest#${imageTag}#g' ./*.yml")
 				sh("kubectl --namespace=${namespace} apply -f deployment-br.yml")
 				sh("kubectl --namespace=${namespace} apply -f service-br.yml")
 			}	
