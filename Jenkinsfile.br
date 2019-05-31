@@ -12,7 +12,7 @@ pipeline {
 		jdk 'jdk'
 	}
 	
-	stages {
+/*	stages {
 		stage('Initialize') {
 			steps {
 				//sh '' '
@@ -20,14 +20,14 @@ pipeline {
 				    echo "M2_HOME = ${M2_HOME}"
 				    //' ''
 			}
-		}
+		} 
 
 		//Checkout Code from Git
 		stage('Checkout') {
 			steps {
 				checkout scm
 			}
-		}
+		} */
 			
 		//Stage 1: Build the JAR file with Maven.
 		stage('Build') {
