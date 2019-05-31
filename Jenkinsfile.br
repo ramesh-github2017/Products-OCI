@@ -12,8 +12,8 @@ pipeline {
 		jdk 'jdk'
 	}
 	
-/*	stages {
-		stage('Initialize') {
+	stages {
+	/*	stage('Initialize') {
 			steps {
 				//sh '' '
 				    echo "PATH = ${PATH}"
