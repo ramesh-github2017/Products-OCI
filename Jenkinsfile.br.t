@@ -28,18 +28,18 @@ pipeline {
 		stage('Push image to registry') {
 			steps {
 				sh "docker login -u 'fedexoraclecloud/oracleidentitycloudservice/5297102' -p 'z;.4Ld>Ach]f61pv6[y0' iad.ocir.io"
-				sh("docker push ${imageTag}")
+				sh("docker push iad.ocir.io/fedexoraclecould/fsc/commerce-services:0.0.1")
 			}
 		}
 		 
 		//Stage 4: Deploy Application
-		stage('Deploy Application') {
+		/*stage('Deploy Application') {
 			steps {
 				sh("kubectl get ns ${namespace} || kubectl create ns ${namespace}")
 				sh("sed -i 's#iad.ocir.io/fedexoraclecloud/fsc/${appName}:latest#${imageTag}#g' ./*.yml")
 				sh("kubectl --namespace=${namespace} apply -f deployment-br.yml")
 				sh("kubectl --namespace=${namespace} apply -f service-br.yml")
 			}	
-		}
+		} */
 	}
 }
